@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+# Первое занятие
+
+## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) [Вебинар ПРЕЗЕНТАЦИЯ обучения](https://drive.google.com/file/d/0B_4NpoQW1xfpNzdqT2hOcUJ6TGs)
+#### [Итоговый пример приложения, разрабатываемого в рамках данного курса (на примере резюме Григория Кислина)](https://javawebinar.github.io/)
+
+### Подготовка рабочего окружения
+- Установите [JDK8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (выбрать Accept License Agreement)
+- Установите систему управления версиями [Git](http://git-scm.com/downloads) (опции по умолчанию)
+- Создайте аккаунт на [GitHub](https://github.com/)
+- Для удобной навигации по файлам на GitHub установите расширение для браузера - [Octotree](https://habrahabr.ru/post/223527/)
+- Установите [IntelliJ IDEA Ultimate](http://www.jetbrains.com/idea/download/index.html)
+> Данная среда разработки является платным продуктом, рассчитанным на 30 дней пробного бесплатного использования. Для выполнения заданий в этой IDE каждый участник курса получит ключ на 6 месяцев
+
+=======
 ## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) [11.07 в 20.00 (GMT+3) будет вступительный вебинар-презентация](https://www.youtube.com/watch?v=Upz4RWvDGCM)
 - Презентация проекта обучения
 - Настройка окружения и проекта в IntelliJ IDEA
@@ -11,6 +26,7 @@
 > Выбирать Ultimate, 30 days trial (нам понадобится SQL, Tomcat, JSP). Ключ на 6 месяцев выдается на первом занятии.
 
 # Первое открытое занятие
+>>>>>>> origin/master
 ## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 1. [Разработка ПО](https://drive.google.com/open?id=0B_4NpoQW1xfpVjZUTEpvVUN1TTA)
 - [Книга: Мифический человеко-месяц](https://ru.wikipedia.org/wiki/Мифический_человеко-месяц)
 - [Размеры проектов в количестве строк кода](https://medium.freecodecamp.com/the-biggest-codebases-in-history-a128bb3eea73)
@@ -22,7 +38,12 @@
 ## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 2. [Обзор инструментов и технологий](https://drive.google.com/file/d/0B_4NpoQW1xfpTXJYU2xZbjN2d2M)
 - [Bash — шпаргалка для начинающих](https://tproger.ru/translations/bash-cheatsheet)
 - [Типичный тест SQL на собеседованиях](https://habrahabr.ru/post/181033/)
+<<<<<<< HEAD
+- **Обновление!!**[Что и почему используют Java-разработчики: опрос RebelLabs](https://jug.ru/2017/12/rebellabs-report/)
+  - [Java Tools and Technologies Landscape Report 2016](https://zeroturnaround.com/rebellabs/java-tools-and-technologies-landscape-2016/)
+=======
 - **Обновление!!** [Java Tools and Technologies Landscape Report 2016](https://zeroturnaround.com/rebellabs/java-tools-and-technologies-landscape-2016/)
+>>>>>>> origin/master
   - [Java Tools and Technologies Landscape for 2014](http://zeroturnaround.com/rebellabs/java-tools-and-technologies-landscape-for-2014)
 -  Дополнительно:
    - [Автоматизированные сборки в Java](http://www.quizful.net/post/automated-builds-java)
@@ -44,9 +65,15 @@
 
 ## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 4. [Системы управления версиями. Git](https://drive.google.com/file/d/0B9Ye2auQ_NsFSUNrdVc0bDZuX2s)
 ### Настройка проекта
+<<<<<<< HEAD
+- Создайте на GitHub репозиторий с названием `basejava`
+- [Занесите](https://www.java.com/ru/download/help/path.xml) git в переменную окружения PATH и перезапустите cmd
+- Создайте локальную копию ЭТОГО проекта: `git clone https://github.com/JavaOps/basejava.git`
+=======
 - Создать на GitHub репозиторий `basejava`
 - git занести в переменная окружения PATH, перезапустить cmd
 - Создайте локальную копию проекта: `git clone https://github.com/JavaOps/basejava.git`
+>>>>>>> origin/master
 - Перейти в каталог проекта: `cd basejava`
 - Настроить git в локальном проекте на свой проект в GitHub:
   - `git remote -v`
@@ -71,7 +98,11 @@
 - <a href="https://git-scm.com/book/ru/v2">Книга по Git</a>
 
 ## Домашнее задание HW1
+<<<<<<< HEAD
+- Создайте в IntelliJ IDEA новый проект, выбрав каталог `basejava`, **в котором находится локальная копия моего проекта (необходимо выполнить все действия выше по настройке проекта)**:
+=======
 - Создайте в IntelliJ IDEA новый проект, выбрав каталог `basejava`, в котором находится ваш репозиторий:
+>>>>>>> origin/master
 
 ![newproject](https://user-images.githubusercontent.com/13649199/27245917-c66f0b5a-52f6-11e7-98dc-f88d0198b5c4.png)
 
@@ -79,7 +110,15 @@
 
 ![finish](https://user-images.githubusercontent.com/13649199/27245924-cab3618e-52f6-11e7-9655-4293149b4126.png)
 
+<<<<<<< HEAD
+- Реализуйте класс `ArrayStorage` (вставте код в пустые методы класса): работа с `Resume` на основе массива (методы `clear, get, save, delete, getAll, size`)
+   - Не используйте в решении коллекции, реализацию на их основе мы добавим позднее
+   - Не меняйте синтаксис методов `ArrayStorage` и не меняйте класс `Resume`. Нужет только код внутри готовых методов `ArrayStorage`
+   - [Массивы](http://study-java.ru/uroki-java/massivy-v-java/)
+   - [Java массивы](http://info.javarush.ru/javarush_articles/2015/12/10/Java-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D1%8B.html)
+=======
 - Реализуйте класс `ArrayStorage`: хранение резюме на основе массива (методы `clear, get, save, delete, getAll, size`). Не используйте в решении коллекции, реализацию на их основе мы добавим позднее.
+>>>>>>> origin/master
 - Протестируйте вашу реализацию, запустив `MainTestArrayStorage.main()`: в IDEA слева на полях зеленая стрелка.
 - Протестируйте вашу реализацию интерактивно с помощью `MainArray.main()`.
 - Дополнительные материалы по IntelliJ IDEA
