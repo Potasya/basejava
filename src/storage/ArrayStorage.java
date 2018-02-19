@@ -2,24 +2,13 @@ package storage;
 
 import model.Resume;
 
-import java.util.Arrays;
-
 /**
  * Array based storage for Resumes
  */
 public class ArrayStorage extends AbstractArrayStorage {
 
-    public void save(Resume r) {
-        if (size == STORAGE_LIMIT) {
-            System.out.println("Can't save. There is not enough place in storage.");
-            return;
-        }
-        if (getIndex(r.getUuid()) > 0){
-            System.out.println("Resume already exists!!!");
-            return;
-        }
+    protected void insertElement(Resume r, int index) {
         storage[size] = r;
-        size++;
     }
 
     protected int getIndex(String uuid){
@@ -29,5 +18,10 @@ public class ArrayStorage extends AbstractArrayStorage {
             }
         }
         return -1;
+    }
+
+    @Override
+    protected void deleteElement(int index) {
+        storage[index] = storage[size-1];
     }
 }
