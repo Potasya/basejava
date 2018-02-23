@@ -1,5 +1,8 @@
 package storage;
 
+import exception.ResumeExistsStorageException;
+import exception.ResumeNotExistsStorageException;
+import exception.StorageException;
 import model.Resume;
 
 import java.util.Arrays;
@@ -21,13 +24,11 @@ public abstract class AbstractArrayStorage implements Storage {
 
     public void save(Resume r) {
         if (size == STORAGE_LIMIT) {
-            System.out.println("Can't save. There is not enough place in storage.");
-            return;
+            throw new StorageException("Can't save resume: " + r.getUuid() + ". Storage overflow.", r.getUuid());
         }
         int index = getIndex(r.getUuid());
-        if (index > 0){
-            System.out.println("Resume already exists!!!");
-            return;
+        if (index >= 0){
+            throw new ResumeExistsStorageException(r.getUuid());
         }
         insertElement(r, index);
         size++;
@@ -36,8 +37,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public void update(Resume r){
         int index = getIndex(r.getUuid());
         if (index < 0){
-            System.out.println("No such resume!!!");
-            return;
+            throw new ResumeNotExistsStorageException(r.getUuid());
         }
         storage[index] = r;
     }
@@ -45,8 +45,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index < 0){
-            System.out.println("No such resume!!!");
-            return null;
+            throw new ResumeNotExistsStorageException(uuid);
         }
         return storage[index];
     }
@@ -54,8 +53,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index < 0){
-            System.out.println("No such resume!!!");
-            return;
+            throw new ResumeNotExistsStorageException(uuid);
         }
         deleteElement(index);
         storage[size-1] = null;
