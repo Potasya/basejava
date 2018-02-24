@@ -6,6 +6,7 @@ import exception.StorageException;
 import model.Resume;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Marisha on 19/02/2018.
@@ -49,15 +50,13 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     @Override
     protected void doDelete(Object index) {
         deleteElement((Integer) index);
-        storage[size-1] = null;
+        storage[size - 1] = null;
         size--;
     }
 
-    /**
-     * @return array, contains only Resumes in storage (without null)
-     */
-    public Resume[] getAll() {
-        return Arrays.copyOf(storage, size);
+    @Override
+    protected List<Resume> doCopyAll() {
+        return Arrays.asList(Arrays.copyOfRange(storage, 0, size));
     }
 
     public int getSize() {

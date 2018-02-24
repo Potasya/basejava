@@ -1,29 +1,30 @@
 package model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
  * com.urise.webapp.model.model.Resume class
  */
-public class Resume implements Comparable<Resume>{
+public class Resume implements Comparable<Resume> {
 
     // Unique identifier
     private final String uuid;
 
-    public Resume(String uuid) {
+    private final String fullName;
+
+    public Resume(String uuid, String fullName) {
+        Objects.requireNonNull(uuid, "uuid must not be null");
+        Objects.requireNonNull(fullName, "fullName must not be null");
         this.uuid = uuid;
+        this.fullName = fullName;
     }
 
-    public Resume() {
-        this(UUID.randomUUID().toString());
+    public Resume(String fullName) {
+        this(UUID.randomUUID().toString(), fullName);
     }
 
-    @Override
-    public String toString() {
-        return uuid;
-    }
-
-    public String getUuid(){
+    public String getUuid() {
         return uuid;
     }
 
@@ -31,17 +32,33 @@ public class Resume implements Comparable<Resume>{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Resume resume = (Resume) o;
-        return uuid.equals(resume.uuid);
+
+        if (!uuid.equals(resume.uuid)) return false;
+        return fullName.equals(resume.fullName);
+
     }
 
     @Override
     public int hashCode() {
-        return uuid.hashCode();
+        int result = uuid.hashCode();
+        result = 31 * result + fullName.hashCode();
+        return result;
     }
 
     @Override
     public int compareTo(Resume o) {
-        return uuid.compareTo(o.getUuid());
+        int cmp = fullName.compareTo(o.getFullName());
+        return cmp != 0 ? cmp : uuid.compareTo(o.getUuid());
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    @Override
+    public String toString() {
+        return uuid + '(' + fullName + ')';
     }
 }

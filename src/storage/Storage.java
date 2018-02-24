@@ -2,6 +2,8 @@ package storage;
 
 import model.Resume;
 
+import java.util.List;
+
 /**
  * Created by Marisha on 18/02/2018.
  */
@@ -14,6 +16,6 @@ public interface Storage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll();
+    List<Resume> getAllSorted();
     int getSize();
 }

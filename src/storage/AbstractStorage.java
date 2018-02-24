@@ -4,6 +4,9 @@ import exception.ResumeExistsStorageException;
 import exception.ResumeNotExistsStorageException;
 import model.Resume;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by Marisha on 23/02/2018.
  */
@@ -44,19 +47,29 @@ public abstract class AbstractStorage implements Storage {
 
     protected abstract void doDelete(Object searchKey);
 
-    private Object getExistedSearchKey(String uuid){
+    private Object getExistedSearchKey(String uuid) {
         Object searchKey = getSearchKey(uuid);
-        if (exists(searchKey)){
+        if (exists(searchKey)) {
             throw new ResumeExistsStorageException(uuid);
         }
         return searchKey;
     }
 
-    private Object getNotExistedSearchKey(String uuid){
+    private Object getNotExistedSearchKey(String uuid) {
         Object searchKey = getSearchKey(uuid);
-        if (!exists(searchKey)){
+        if (!exists(searchKey)) {
             throw new ResumeNotExistsStorageException(uuid);
         }
         return searchKey;
     }
+
+    @Override
+    public List<Resume> getAllSorted() {
+        List<Resume> list = doCopyAll();
+        Collections.sort(list);
+        return list;
+    }
+
+    protected abstract List<Resume> doCopyAll();
+
 }

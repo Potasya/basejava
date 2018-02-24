@@ -3,16 +3,22 @@ package storage;
 import model.Resume;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Marisha on 23/02/2018.
  */
 public class ListStorage extends AbstractStorage {
-    protected ArrayList<Resume> storage = new ArrayList();
+    protected ArrayList<Resume> storage = new ArrayList<>();
 
     @Override
     public void clear() {
         storage.clear();
+    }
+
+    @Override
+    protected List<Resume> doCopyAll() {
+        return storage;
     }
 
     @Override
@@ -42,11 +48,6 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    public Resume[] getAll() {
-        return storage.toArray(new Resume[getSize()]);
-    }
-
-    @Override
     public int getSize() {
         return storage.size();
     }
@@ -54,7 +55,7 @@ public class ListStorage extends AbstractStorage {
     @Override
     protected Integer getSearchKey(String uuid) {
         for (int i = 0; i < storage.size(); i++) {
-            if (storage.get(i).getUuid().equals(uuid)){
+            if (storage.get(i).getUuid().equals(uuid)) {
                 return i;
             }
         }

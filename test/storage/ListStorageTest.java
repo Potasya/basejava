@@ -12,8 +12,4 @@ public class ListStorageTest extends AbstractStorageTest {
     public ListStorageTest() {
         super(new ListStorage());
     }
-
-    @Override
-    protected void testOrder(Resume[] resumes) {
-    }
 }

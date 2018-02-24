@@ -2,11 +2,12 @@ package storage;
 
 import exception.ResumeExistsStorageException;
 import exception.ResumeNotExistsStorageException;
-import exception.StorageException;
 import model.Resume;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -14,11 +15,11 @@ import static org.junit.Assert.*;
  * Created by Marisha on 23/02/2018.
  */
 public abstract class AbstractStorageTest {
-    protected static final Resume RESUME_1 = new Resume("1");
-    protected static final Resume RESUME_3 = new Resume("3");
-    protected static final Resume RESUME_2 = new Resume("2");
-    protected static final Resume RESUME_4 = new Resume("4");
-    private static final Resume TEST = new Resume("TEST");
+    protected static final Resume RESUME_1 = new Resume("1", "A");
+    protected static final Resume RESUME_3 = new Resume("3", "C");
+    protected static final Resume RESUME_2 = new Resume("2", "B");
+    protected static final Resume RESUME_4 = new Resume("4", "D");
+    private static final Resume TEST = new Resume("TEST", "TEST");
     protected Storage storage;
 
     protected AbstractStorageTest(Storage storage) {
@@ -54,7 +55,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void update() throws Exception {
-        Resume r = new Resume("1");
+        Resume r = new Resume("1", "Aa");
         storage.update(r);
         assertTrue(r == storage.get("1"));
         assertFalse(RESUME_1 == storage.get("1"));
@@ -91,24 +92,25 @@ public abstract class AbstractStorageTest {
     }
 
     @Test
-    public void getAll() throws Exception {
-        Resume[] resumes = storage.getAll();
-        assertEquals(4, resumes.length);
-        testOrder(resumes);
+    public void getAllSorted() throws Exception {
+        List<Resume> resumes = storage.getAllSorted();
+        assertEquals(4, resumes.size());
+        Assert.assertEquals(resumes.get(0), RESUME_1);
+        Assert.assertEquals(resumes.get(1), RESUME_2);
+        Assert.assertEquals(resumes.get(2), RESUME_3);
+        Assert.assertEquals(resumes.get(3), RESUME_4);
     }
-
-    protected abstract void testOrder(Resume[] resumes);
 
     @Test
     public void getSize() throws Exception {
         assertStorageSize(4);
     }
 
-    private void assertStorageGet(Resume r){
+    private void assertStorageGet(Resume r) {
         Assert.assertEquals(r, storage.get(r.getUuid()));
     }
 
-    private void assertStorageSize(int size){
+    private void assertStorageSize(int size) {
         Assert.assertEquals(size, storage.getSize());
     }
 }

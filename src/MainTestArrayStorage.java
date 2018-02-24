@@ -3,8 +3,6 @@ import storage.ArrayStorage;
 import storage.SortedArrayStorage;
 import storage.Storage;
 
-import java.util.ArrayList;
-
 /**
  * Test for com.urise.webapp.storage.storage.ArrayStorage
  */
@@ -13,9 +11,9 @@ public class MainTestArrayStorage {
     private static final Storage SORTED_ARRAY_STORAGE = new SortedArrayStorage();
 
     public static void main(String[] args) {
-        final Resume r1 = new Resume("uuid1");
-        final Resume r2 = new Resume("uuid2");
-        final Resume r3 = new Resume("uuid3");
+        final Resume r1 = new Resume("uuid1", "A");
+        final Resume r2 = new Resume("uuid2", "B");
+        final Resume r3 = new Resume("uuid3", "C");
 
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r3);
@@ -52,7 +50,7 @@ public class MainTestArrayStorage {
 
     static void printAll(Storage storage) {
         System.out.println("\nGet All");
-        for (Resume r : storage.getAll()) {
+        for (Resume r : storage.getAllSorted()) {
             System.out.println(r);
         }
     }
