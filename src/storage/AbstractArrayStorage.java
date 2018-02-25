@@ -1,7 +1,5 @@
 package storage;
 
-import exception.ResumeExistsStorageException;
-import exception.ResumeNotExistsStorageException;
 import exception.StorageException;
 import model.Resume;
 
@@ -11,7 +9,7 @@ import java.util.List;
 /**
  * Created by Marisha on 19/02/2018.
  */
-public abstract class AbstractArrayStorage extends AbstractStorage {
+public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
 
     protected static final int STORAGE_LIMIT = 10000;
     protected int size = 0;
@@ -24,32 +22,32 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    protected void doSave(Resume r, Object index) {
+    protected void doSave(Resume r, Integer index) {
         if (size == STORAGE_LIMIT) {
             throw new StorageException("Can't save resume: " + r.getUuid() + ". Storage overflow.", r.getUuid());
         }
-        insertElement(r, (Integer) index);
+        insertElement(r, index);
         size++;
     }
 
     @Override
-    protected boolean exists(Object searchKey) {
-        return (Integer) searchKey >= 0;
+    protected boolean exists(Integer searchKey) {
+        return searchKey >= 0;
     }
 
     @Override
-    protected void doUpdate(Resume r, Object index) {
-        storage[(Integer) index] = r;
+    protected void doUpdate(Resume r, Integer index) {
+        storage[index] = r;
     }
 
     @Override
-    protected Resume doGet(Object index) {
-        return storage[(Integer) index];
+    protected Resume doGet(Integer index) {
+        return storage[index];
     }
 
     @Override
-    protected void doDelete(Object index) {
-        deleteElement((Integer) index);
+    protected void doDelete(Integer index) {
+        deleteElement(index);
         storage[size - 1] = null;
         size--;
     }

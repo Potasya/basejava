@@ -10,16 +10,16 @@ import java.util.Map;
 /**
  * Created by Marisha on 23/02/2018.
  */
-public class MapResumeStorage extends AbstractStorage {
+public class MapResumeStorage extends AbstractStorage<Resume> {
     protected Map<String, Resume> storage = new HashMap<>();
 
     @Override
-    protected void doSave(Resume r, Object resumeKey) {
+    protected void doSave(Resume r, Resume resumeKey) {
         storage.put(r.getUuid(), r);
     }
 
     @Override
-    protected boolean exists(Object resumeKey) {
+    protected boolean exists(Resume resumeKey) {
         return resumeKey != null;
     }
 
@@ -29,18 +29,18 @@ public class MapResumeStorage extends AbstractStorage {
     }
 
     @Override
-    protected void doUpdate(Resume r, Object resumeKey) {
+    protected void doUpdate(Resume r, Resume resumeKey) {
         doSave(r, resumeKey);
     }
 
     @Override
-    protected Resume doGet(Object resumeKey) {
-        return (Resume) resumeKey;
+    protected Resume doGet(Resume resumeKey) {
+        return resumeKey;
     }
 
     @Override
-    protected void doDelete(Object resumeKey) {
-        storage.remove(((Resume) resumeKey).getUuid());
+    protected void doDelete(Resume resumeKey) {
+        storage.remove((resumeKey).getUuid());
     }
 
     @Override

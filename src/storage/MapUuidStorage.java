@@ -7,36 +7,36 @@ import java.util.*;
 /**
  * Created by Marisha on 23/02/2018.
  */
-public class MapUuidStorage extends AbstractStorage {
+public class MapUuidStorage extends AbstractStorage<String> {
     protected Map<String, Resume> storage = new HashMap<>();
 
     @Override
-    protected void doSave(Resume r, Object uuid) {
-        storage.put((String) uuid, r);
+    protected void doSave(Resume r, String uuid) {
+        storage.put(uuid, r);
     }
 
     @Override
-    protected boolean exists(Object uuid) {
+    protected boolean exists(String uuid) {
         return storage.containsKey(uuid);
     }
 
     @Override
-    protected Object getSearchKey(String uuid) {
+    protected String getSearchKey(String uuid) {
         return uuid;
     }
 
     @Override
-    protected void doUpdate(Resume r, Object uuid) {
+    protected void doUpdate(Resume r, String uuid) {
         doSave(r, uuid);
     }
 
     @Override
-    protected Resume doGet(Object uuid) {
+    protected Resume doGet(String uuid) {
         return storage.get(uuid);
     }
 
     @Override
-    protected void doDelete(Object uuid) {
+    protected void doDelete(String uuid) {
         storage.remove(uuid);
     }
 
