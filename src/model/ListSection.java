@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,9 +11,9 @@ import java.util.Objects;
 public class ListSection<T>  extends Section{
     private final List<T> items;
 
-    public ListSection(List<T> items) {
+    public ListSection(T... items) {
         Objects.requireNonNull(items, "List items mustn't be null");
-        this.items = items;
+        this.items = Arrays.asList(items);
     }
 
     public void addItemToList(T item){
