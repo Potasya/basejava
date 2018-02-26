@@ -11,9 +11,13 @@ import java.util.Objects;
 public class ListSection<T>  extends Section{
     private final List<T> items;
 
-    public ListSection(T... items) {
+    public ListSection(List<T> items) {
         Objects.requireNonNull(items, "List items mustn't be null");
-        this.items = Arrays.asList(items);
+        this.items = items;
+    }
+
+    public ListSection(T... items) {
+        this(Arrays.asList(items));
     }
 
     public void addItemToList(T item){

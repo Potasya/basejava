@@ -30,10 +30,10 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     protected void doSave(Resume r, File file) {
         try {
             file.createNewFile();
-            doWrite(r, file);
         } catch (IOException e) {
-            throw new StorageException("IO error", r.getUuid(), e);
+            throw new StorageException("Can't create file " + file.getAbsolutePath(), file.getName(), e);
         }
+        doUpdate(r, file);
     }
 
     protected abstract void doWrite(Resume r, File file) throws IOException;
@@ -53,45 +53,54 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
         try {
             doWrite(r, file);
         } catch (IOException e) {
-            throw new StorageException("IO error", r.getUuid(), e);
+            throw new StorageException("File write error: " + file.getAbsolutePath(), r.getUuid(), e);
         }
     }
 
     @Override
     protected Resume doGet(File file) {
-        return doRead(file);
+        try {
+            return doRead(file);
+        } catch (IOException e) {
+            throw new StorageException("File read error: " + file.getAbsolutePath(), file.getName(), e);
+        }
     }
 
-    protected abstract Resume doRead(File file);
+    protected abstract Resume doRead(File file) throws IOException;
 
     @Override
     protected void doDelete(File file) {
-        if (file.isDirectory()){
-            throw new IllegalArgumentException(file.getAbsolutePath() + " is directory");
+        if (!file.delete()){
+            throw new StorageException("File delete error", file.getName());
         }
-        file.delete();
     }
 
     @Override
     protected List<Resume> doCopyAll() {
         List<Resume> list = new ArrayList<>();
-        for(File f : dir.listFiles()){
-            if (!f.isDirectory()) {
-                list.add(doRead(f));
-            }
+        for(File f : getDirFiles()) {
+            list.add(doGet(f));
         }
         return list;
     }
 
     @Override
     public void clear() {
-        for(File f : dir.listFiles()){
-            f.delete();
+        for (File f : getDirFiles()) {
+            doDelete(f);
         }
     }
 
     @Override
     public int getSize() {
-        return dir.listFiles(pathname -> !pathname.isDirectory()).length;
+        return getDirFiles().length;
+    }
+
+    private File[] getDirFiles(){
+        File[] files = dir.listFiles();
+        if (files == null){
+            throw new StorageException("Dir read error", null);
+        }
+        return files;
     }
 }

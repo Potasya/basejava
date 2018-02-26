@@ -4,6 +4,8 @@ import util.DateUtil;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -11,11 +13,16 @@ import java.util.Objects;
  */
 public class Organization {
     private final Link homepage;
-    private final Position[] positions;
+    private final List<Position> positions;
 
     public Organization(String name, String url, Position... positions) {
-        Objects.requireNonNull(positions, "Organization notes mustn't me null");
+        Objects.requireNonNull(positions, "Positions mustn't me null");
         this.homepage = new Link(name, url);
+        this.positions = Arrays.asList(positions);
+    }
+
+    public Organization(Link homepage, List<Position> positions) {
+        this.homepage = homepage;
         this.positions = positions;
     }
 
@@ -52,12 +59,22 @@ public class Organization {
         private final String title;
         private final String description;
 
-        public Position(int startYear, Month startMonth, int endYear, Month endMonth, String title, String description) {
+        public Position(LocalDate startDate, LocalDate endDate, String title, String description) {
+            Objects.requireNonNull(startDate, "startDate mustn't be null");
+            Objects.requireNonNull(endDate, "endDate mustn't be null");
             Objects.requireNonNull(title, "title mustn't be null");
-            this.startDate = DateUtil.of(startYear, startMonth);
-            this.endDate = DateUtil.of(endYear, endMonth);
+            this.startDate = startDate;
+            this.endDate = endDate;
             this.title = title;
             this.description = description;
+        }
+
+        public Position(int startYear, Month startMonth, int endYear, Month endMonth, String title, String description) {
+            this(DateUtil.of(startYear, startMonth), DateUtil.of(endYear, endMonth), title, description);
+        }
+
+        public Position(int startYear, Month startMonth, String title, String description) {
+            this(DateUtil.of(startYear, startMonth), DateUtil.NOW, title, description);
         }
 
         @Override

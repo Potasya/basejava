@@ -56,7 +56,7 @@ public abstract class AbstractStorageTest {
         RESUME_4.addSection(SectionType.ACHIEVEMENTS, new ListSection("Achievement"));
         RESUME_4.addSection(SectionType.EDUCATION, new ListSection(
                 new Organization("School", "schoolUrl",
-                        new Organization.Position(2013, Month.JULY, 2015, Month.APRIL, "Student", "Best one"))));
+                        new Organization.Position(2013, Month.JULY, "Student", "Best one"))));
         RESUME_4.addSection(SectionType.OBJECTIVE, new TextSection("Worker"));
     }
 
