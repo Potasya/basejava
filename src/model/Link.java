@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by Marisha on 25/02/2018.
  */
-public class Link {
+public class Link implements Serializable{
+    public static final long serialVersionUID = 1L;
     private final String name;
     private final String url;
 

@@ -91,7 +91,7 @@ public abstract class AbstractStorageTest {
     public void update() throws Exception {
         Resume r = new Resume("1", "Aa");
         storage.update(r);
-        assertTrue(r == storage.get("1"));
+        assertTrue(r.equals(storage.get("1")));
         assertFalse(RESUME_1 == storage.get("1"));
     }
 
