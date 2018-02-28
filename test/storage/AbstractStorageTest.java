@@ -16,6 +16,8 @@ import static org.junit.Assert.*;
  * Created by Marisha on 23/02/2018.
  */
 public abstract class AbstractStorageTest {
+    protected static final String STORAGE_PATH = "/Users/Marisha/basejava/storage";
+
     protected static final Resume RESUME_1 = new Resume("1", "A");
     protected static final Resume RESUME_3 = new Resume("3", "C");
     protected static final Resume RESUME_2 = new Resume("2", "B");

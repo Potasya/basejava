@@ -2,6 +2,7 @@ package storage;
 
 import exception.StorageException;
 import model.Resume;
+import storage.serializer.StreamSerializer;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,13 +12,12 @@ import java.util.Objects;
 /**
  * Created by Marisha on 25/02/2018.
  */
-public class FileStorage<S extends SerializationStrategy> extends AbstractStorage<File> {
+public class FileStorage<S extends StreamSerializer> extends AbstractStreamStorage<File, S> {
     private final File dir;
-    private final S strategy;
 
-    protected FileStorage(File dir, S strategy) {
+    protected FileStorage(File dir, S serializer) {
+        super(serializer);
         Objects.requireNonNull(dir, "Storage directory mustn't be null");
-        Objects.requireNonNull(strategy, "Serialization strategy mustn't be null");
         if(!dir.isDirectory()){
             throw new IllegalArgumentException(dir.getAbsolutePath() + " is not directory");
         }
@@ -25,7 +25,6 @@ public class FileStorage<S extends SerializationStrategy> extends AbstractStorag
             throw new IllegalArgumentException(dir.getAbsolutePath() + " is not RW");
         }
         this.dir = dir;
-        this.strategy = strategy;
     }
 
     @Override
@@ -36,10 +35,6 @@ public class FileStorage<S extends SerializationStrategy> extends AbstractStorag
             throw new StorageException("Can't create file " + file.getAbsolutePath(), file.getName(), e);
         }
         doUpdate(r, file);
-    }
-
-    protected void doWrite(Resume r, OutputStream os) throws IOException{
-        strategy.doWrite(r, os);
     }
 
     @Override
@@ -68,10 +63,6 @@ public class FileStorage<S extends SerializationStrategy> extends AbstractStorag
         } catch (IOException e) {
             throw new StorageException("File read error: " + file.getAbsolutePath(), file.getName(), e);
         }
-    }
-
-    protected Resume doRead(InputStream is) throws IOException{
-        return strategy.doRead(is);
     }
 
     @Override
@@ -105,7 +96,7 @@ public class FileStorage<S extends SerializationStrategy> extends AbstractStorag
     private File[] getDirFiles(){
         File[] files = dir.listFiles();
         if (files == null){
-            throw new StorageException("Dir read error", null);
+            throw new StorageException("Dir read error");
         }
         return files;
     }

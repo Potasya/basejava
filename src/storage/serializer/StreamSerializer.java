@@ -1,4 +1,4 @@
-package storage;
+package storage.serializer;
 
 import model.Resume;
 
@@ -9,7 +9,7 @@ import java.io.OutputStream;
 /**
  * Created by Marisha on 28/02/2018.
  */
-public interface SerializationStrategy {
+public interface StreamSerializer {
 
     void doWrite(Resume r, OutputStream os) throws IOException;
 
