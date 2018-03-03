@@ -7,10 +7,10 @@ import java.io.File;
 /**
  * Created by Marisha on 27/02/2018.
  */
-public class FileStorageTest extends AbstractStorageTest{
+public class ObjectFileStorageTest extends AbstractStorageTest{
     protected static final File FILE_STORAGE = new File(STORAGE_PATH);
 
-    public FileStorageTest() {
+    public ObjectFileStorageTest() {
         super(new FileStorage(FILE_STORAGE, new ObjectStreamSerializer()));
     }
 }

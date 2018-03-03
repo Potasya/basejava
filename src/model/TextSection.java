@@ -7,11 +7,19 @@ import java.util.Objects;
  */
 public class TextSection extends Section {
     public static final long serialVersionUID = 1L;
-    private final String content;
+
+    private String content;
+
+    public TextSection() {
+    }
 
     public TextSection(String content) {
         Objects.requireNonNull(content, "Content mustn't be null");
         this.content = content;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     @Override

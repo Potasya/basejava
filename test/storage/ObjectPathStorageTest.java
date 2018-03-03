@@ -5,9 +5,9 @@ import storage.serializer.ObjectStreamSerializer;
 /**
  * Created by Marisha on 27/02/2018.
  */
-public class PathStorageTest extends AbstractStorageTest{
+public class ObjectPathStorageTest extends AbstractStorageTest{
 
-    public PathStorageTest() {
+    public ObjectPathStorageTest() {
         super(new PathStorage(STORAGE_PATH, new ObjectStreamSerializer()));
     }
 }
