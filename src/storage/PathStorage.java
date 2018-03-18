@@ -4,7 +4,9 @@ import exception.StorageException;
 import model.Resume;
 import storage.serializer.StreamSerializer;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

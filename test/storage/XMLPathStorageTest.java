@@ -2,8 +2,6 @@ package storage;
 
 import storage.serializer.XMLStreamSerializer;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Marisha on 01/03/2018.
  */

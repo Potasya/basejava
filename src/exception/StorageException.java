@@ -1,6 +1,5 @@
 package exception;
 
-import java.io.IOException;
 
 /**
  * Created by Marisha on 19/02/2018.
@@ -26,6 +25,10 @@ public class StorageException extends RuntimeException {
 
     public StorageException(String message, Exception e) {
         this(message, null, e);
+    }
+
+    public StorageException(Exception e) {
+        this(e.getMessage(), e);
     }
 
     public String getUuid() {

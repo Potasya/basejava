@@ -1,7 +1,5 @@
 package storage;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Marisha on 24/02/2018.
  */

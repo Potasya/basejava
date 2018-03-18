@@ -1,8 +1,5 @@
 package storage;
 
-import model.Resume;
-import org.junit.Assert;
-
 /**
  * Created by Marisha on 23/02/2018.
  */

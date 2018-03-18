@@ -2,9 +2,6 @@ package util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import model.ListSection;
-import model.Organization;
 import model.Section;
 
 import java.io.Reader;

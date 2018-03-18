@@ -2,7 +2,6 @@ package storage.serializer;
 
 import exception.StorageException;
 import model.Resume;
-import storage.serializer.StreamSerializer;
 
 import java.io.*;
 
