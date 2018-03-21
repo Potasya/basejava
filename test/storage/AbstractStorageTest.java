@@ -23,8 +23,8 @@ public abstract class AbstractStorageTest {
     protected static final String DB_PASSWORD = Config.get().getDbPassword();
 
     protected static final Resume RESUME_1 = new Resume("1", "A");
-    protected static final Resume RESUME_3 = new Resume("3", "C");
     protected static final Resume RESUME_2 = new Resume("2", "B");
+    protected static final Resume RESUME_3 = new Resume("3", "C");
     protected static final Resume RESUME_4 = new Resume("4", "D");
     private static final Resume TEST = new Resume("TEST", "TEST");
     protected Storage storage;
@@ -34,18 +34,18 @@ public abstract class AbstractStorageTest {
     }
 
     static {
-//        RESUME_1.addContact(ContactType.EMAIL, "mail@gmail.com");
-//        RESUME_1.addContact(ContactType.GITHUB, "github");
-//        RESUME_1.addContact(ContactType.PHONENUMBER, "123");
+        RESUME_1.addContact(ContactType.EMAIL, "mail@gmail.com");
+        RESUME_1.addContact(ContactType.GITHUB, "github");
+        RESUME_1.addContact(ContactType.PHONENUMBER, "123");
 //        RESUME_1.addSection(SectionType.ACHIEVEMENTS, new ListSection("1ach-t","2ach-t","3ach-t" ));
 //        RESUME_1.addSection(SectionType.EDUCATION, new ListSection(
 //                new Organization("School1", "urlSchool1",
 //                        new Organization.Position(2000, Month.APRIL, 2003, Month.APRIL, "Programmer", null))));
 //        RESUME_1.addSection(SectionType.OBJECTIVE, new TextSection("Engineer"));
 //
-//        RESUME_2.addContact(ContactType.HOMEPAGE, "page");
-//        RESUME_2.addContact(ContactType.SKYPE, "skype");
-//        RESUME_2.addContact(ContactType.PHONENUMBER, "123456");
+        RESUME_2.addContact(ContactType.HOMEPAGE, "page");
+        RESUME_2.addContact(ContactType.SKYPE, "skype");
+        RESUME_2.addContact(ContactType.PHONENUMBER, "123456");
 //        RESUME_2.addSection(SectionType.QUALIFICATIONS, new ListSection("1q","2q","3q"));
 //        RESUME_2.addSection(SectionType.EXPERIENCE, new ListSection(
 //                new Organization("Org1", "urlOrg1",
@@ -55,9 +55,9 @@ public abstract class AbstractStorageTest {
 //        RESUME_2.addSection(SectionType.OBJECTIVE, new TextSection("Senior developer"));
 //        RESUME_2.addSection(SectionType.PERSONAL, new TextSection("Good person"));
 //
-//        RESUME_3.addContact(ContactType.EMAIL, "mailMail@gmail.ru");
-//        RESUME_3.addContact(ContactType.PHONENUMBER, "12345678");
-//        RESUME_3.addContact(ContactType.PHONENUMBER, "123");
+        RESUME_3.addContact(ContactType.EMAIL, "mailMail@gmail.ru");
+        RESUME_3.addContact(ContactType.PHONENUMBER, "12345678");
+        RESUME_3.addContact(ContactType.PHONENUMBER, "123");
 //
 //        RESUME_4.addSection(SectionType.ACHIEVEMENTS, new ListSection("Achievement"));
 //        RESUME_4.addSection(SectionType.EDUCATION, new ListSection(

@@ -12,16 +12,36 @@ import java.sql.SQLException;
  */
 public class SqlHelper {
 
-    public static <R> R execute(ConnectionFactory connectionFactory, String query, ThrowingFunction<PreparedStatement, R> function){
+    public static <T> T execute(ConnectionFactory connectionFactory, String query, SqlExecutor<T> executor){
         try (Connection conn = connectionFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
-            return function.apply(ps);
+            return executor.execute(ps);
         } catch (SQLException e) {
             throw new StorageException(e);
         }
     }
 
-    public interface ThrowingFunction<T,R>{
-        R apply(T t) throws SQLException;
+    public static <T> T executeTransaction(ConnectionFactory connectionFactory, SqlTransaction<T> executor){
+        try (Connection conn = connectionFactory.getConnection()) {
+            try {
+                conn.setAutoCommit(false);
+                T res = executor.execute(conn);
+                conn.commit();
+                return res;
+            } catch (SQLException e){
+                conn.rollback();
+                throw new StorageException(e);
+            }
+        } catch (SQLException e) {
+            throw new StorageException(e);
+        }
+    }
+
+    public interface SqlExecutor<T>{
+        T execute(PreparedStatement t) throws SQLException;
+    }
+
+    public interface SqlTransaction<T> {
+        T execute(Connection connection) throws SQLException;
     }
 }
