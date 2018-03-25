@@ -10,7 +10,7 @@ import java.util.Properties;
  * Created by Marisha on 16/03/2018.
  */
 public class Config {
-    private static final File PROPS = new File("config/resumes.properties");
+    private static final File PROPS = new File(getHomeDir(), "config/resumes.properties");
     private static final Properties props = new Properties();
     private String storageDir;
     private String dbUser;
@@ -48,5 +48,14 @@ public class Config {
 
     public String getDbUrl() {
         return dbUrl;
+    }
+
+    private static File getHomeDir(){
+        String homeDir = System.getProperty("homeDir");
+        File file = new File(homeDir == null ? "." : homeDir);
+        if (!file.isDirectory()){
+            throw new IllegalStateException(homeDir + " is not directory");
+        }
+        return file;
     }
 }

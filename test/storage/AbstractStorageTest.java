@@ -37,33 +37,33 @@ public abstract class AbstractStorageTest {
         RESUME_1.addContact(ContactType.EMAIL, "mail@gmail.com");
         RESUME_1.addContact(ContactType.GITHUB, "github");
         RESUME_1.addContact(ContactType.PHONENUMBER, "123");
-//        RESUME_1.addSection(SectionType.ACHIEVEMENTS, new ListSection("1ach-t","2ach-t","3ach-t" ));
+        RESUME_1.addSection(SectionType.ACHIEVEMENTS, new ListSection("1ach-t","2ach-t","3ach-t" ));
 //        RESUME_1.addSection(SectionType.EDUCATION, new ListSection(
 //                new Organization("School1", "urlSchool1",
 //                        new Organization.Position(2000, Month.APRIL, 2003, Month.APRIL, "Programmer", null))));
-//        RESUME_1.addSection(SectionType.OBJECTIVE, new TextSection("Engineer"));
+        RESUME_1.addSection(SectionType.OBJECTIVE, new TextSection("Engineer"));
 //
         RESUME_2.addContact(ContactType.HOMEPAGE, "page");
         RESUME_2.addContact(ContactType.SKYPE, "skype");
         RESUME_2.addContact(ContactType.PHONENUMBER, "123456");
-//        RESUME_2.addSection(SectionType.QUALIFICATIONS, new ListSection("1q","2q","3q"));
+        RESUME_2.addSection(SectionType.QUALIFICATIONS, new ListSection("1q","2q","3q"));
 //        RESUME_2.addSection(SectionType.EXPERIENCE, new ListSection(
 //                new Organization("Org1", "urlOrg1",
 //                        new Organization.Position(2007, Month.APRIL, 2009, Month.SEPTEMBER, "Analyst", "Good one")),
 //                new Organization("Org2", "urlOrg2",
 //                        new Organization.Position(2010, Month.AUGUST, 2014, Month.AUGUST, "Engineer", "Good one"))));
-//        RESUME_2.addSection(SectionType.OBJECTIVE, new TextSection("Senior developer"));
-//        RESUME_2.addSection(SectionType.PERSONAL, new TextSection("Good person"));
-//
+        RESUME_2.addSection(SectionType.OBJECTIVE, new TextSection("Senior developer"));
+        RESUME_2.addSection(SectionType.PERSONAL, new TextSection("Good person"));
+
         RESUME_3.addContact(ContactType.EMAIL, "mailMail@gmail.ru");
         RESUME_3.addContact(ContactType.PHONENUMBER, "12345678");
         RESUME_3.addContact(ContactType.PHONENUMBER, "123");
-//
-//        RESUME_4.addSection(SectionType.ACHIEVEMENTS, new ListSection("Achievement"));
+
+        RESUME_4.addSection(SectionType.ACHIEVEMENTS, new ListSection("Achievement", "Achiivement"));
 //        RESUME_4.addSection(SectionType.EDUCATION, new ListSection(
 //                new Organization("School", "schoolUrl",
 //                        new Organization.Position(2013, Month.JULY, "Student", "Best one"))));
-//        RESUME_4.addSection(SectionType.OBJECTIVE, new TextSection("Worker"));
+        RESUME_4.addSection(SectionType.OBJECTIVE, new TextSection("Worker"));
     }
 
     @Before
